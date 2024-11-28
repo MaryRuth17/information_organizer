@@ -13,7 +13,11 @@ def main(): # asking the name to search in the file
 def search_name(name): # seaarching the name in file
     try:
         with open("personal_info.txt", "r") as file:  # Open the file in read mode
-            for entry in file:
+            data = file.read() 
+
+            entries = data.split("-" * 50)
+
+            for entry in entries:
                 if name in entry: 
                     return entry
             
