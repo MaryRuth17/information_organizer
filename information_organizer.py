@@ -1,32 +1,33 @@
 
-
+def user_personal_info(): # to collect the info
 # ask user information
-name = input("Enter full name: ")
-age = int(input("Enter age: "))
-address = input("Enter address: ")
-number = int(input("Enter phone number: "))
-email = input("Enter email: ")
-birthdate = int(input("Enter birthdate (e.g., YYYYMMDD): "))
+    name = input("Enter full name: ")
+    age = int(input("Enter age: "))
+    address = input("Enter address: ")
+    number = int(input("Enter phone number: "))
+    email = input("Enter email: ")
+    birthdate = int(input("Enter birthdate (e.g., YYYYMMDD): "))
 
-# list the information
-user_personal_info = {
-    "name" : name,
-    "age" : age,
-    "address" : address,
-    "number" : number,
-    "email" : email,
-    "birthdate" : birthdate
-}
+    # list the information
+    return {
+        "name" : name,
+        "age" : age,
+        "address" : address,
+        "number" : number,
+        "email" : email,
+        "birthdate" : birthdate
+    }
 
 # write the collected information to a file
 def write_to_file(data):
     with open("personal_info.txt", "a") as file:
-        file.write(f"Full Name: {data['name']}")
-        file.write(f"Age: {data['age']}")
-        file.write(f"Address: {data['address']}")
-        file.write(f"Phone Number: {data['number']}")
-        file.write(f"Email: {data['email']}")
-        file.write(f"Birthdate: {data['birthdate']}")
+        file.write(f"Full Name: {data['name']}\n")
+        file.write(f"Age: {data['age']}\n")
+        file.write(f"Address: {data['address']}\n")
+        file.write(f"Phone Number: {data['number']}\n")
+        file.write(f"Email: {data['email']}\n")
+        file.write(f"Birthdate: {data['birthdate']}\n")
+        file.write("-"*50 + "\n") 
 
 def main():
     while True: # looping the program flow
@@ -43,7 +44,7 @@ def main():
             if another_user == "yes":
                 break 
             elif another_user == "no":
-                print("Thank you for entering the information!")
+                print("Thank you!")
                 exit()
 
             else:
