@@ -1,22 +1,55 @@
 
 def user_personal_info(): # to collect the info
 # ask user information
-    name = input("Enter full name: ")
-    age = int(input("Enter age: "))
-    address = input("Enter address: ")
-    number = int(input("Enter phone number: "))
-    email = input("Enter email: ")
-    birthdate = int(input("Enter birthdate (e.g., YYYYMMDD): "))
+    while True:
+        name = input("Enter full name (letters only): ")
+        if not name.isalpha():
+            print("Name should only contain letters")
+            continue
+        
+        while True:
+            try:
+                age = int(input("Enter age: "))
+                if age < 0 or age > 120:
+                    raise ValueError
+                break
 
-    # list the information
-    return {
-        "name" : name,
-        "age" : age,
-        "address" : address,
-        "number" : number,
-        "email" : email,
-        "birthdate" : birthdate
-    }
+            except ValueError:
+                print("Age must be reasonable age and a number")
+
+        address = input("Enter address: ")
+
+        while True:
+            try:
+                number = int(input("Enter phone number (e.g 9161161553): "))
+                if len(str(number)) != 10: 
+                    raise ValueError
+                break
+                
+            except ValueError:
+                print("Phone number must be a number with 10 digits")
+
+        email = input("Enter email: ")
+
+        while True:
+            try:
+                birthdate = int(input("Enter birthdate (YYYYMMDD): "))
+                if len(str(birthdate)) != 8:
+                    raise ValueError
+                break
+
+            except ValueError:
+                print("Birthdate must be a number with format YYYYMMDD")
+
+        # list the information
+        return {
+            "name" : name,
+            "age" : age,
+            "address" : address,
+            "number" : number,
+            "email" : email,
+            "birthdate" : birthdate
+        }
 
 # write the collected information to a file
 def write_to_file(data):
