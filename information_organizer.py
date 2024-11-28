@@ -1,6 +1,6 @@
-    
 
-#ask user information
+
+# ask user information
 name = input("Enter full name: ")
 age = int(input("Enter age: "))
 address = input("Enter address: ")
@@ -27,3 +27,27 @@ def write_to_file(data):
         file.write(f"Phone Number: {data['number']}")
         file.write(f"Email: {data['email']}")
         file.write(f"Birthdate: {data['birthdate']}")
+
+def main():
+    while True: # looping the program flow
+        # Collect personal information
+        personal_info = user_personal_info()
+        
+        # Write the collected data to a file
+        write_to_file(personal_info)
+
+        # Ask if the user wants to input another person's information
+        while True:
+            another_user = input("Do you want to input another person? (yes/no): ").strip().lower()
+        
+            if another_user == "yes":
+                break 
+            elif another_user == "no":
+                print("Thank you for entering the information!")
+                exit()
+
+            else:
+                print("Invalid answer, try again.")
+
+if __name__ == "__main__":
+    main()
