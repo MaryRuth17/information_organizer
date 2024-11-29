@@ -2,8 +2,8 @@
 def user_personal_info(): # to collect the info
 # ask user information
     while True:
-        name = input("Enter full name (letters only): ")
-        if not name.isalpha():
+        name = input("Enter first name (letters only): ")
+        if not all(c.isalpha() or c.isspace() for c in name):
             print("Name should only contain letters")
             continue
         
@@ -21,13 +21,13 @@ def user_personal_info(): # to collect the info
 
         while True:
             try:
-                number = int(input("Enter phone number (e.g 9161161553): "))
+                number = int(input("Enter phone number (e.g 09161161553): "))
                 if len(str(number)) != 10: 
                     raise ValueError
                 break
                 
             except ValueError:
-                print("Phone number must be a number with 10 digits")
+                print("Phone number must be a number with 11 digits")
 
         email = input("Enter email: ")
 
